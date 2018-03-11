@@ -12,16 +12,12 @@
 */
 
 Route::get('/tasks', function () {
-    
-    $tasks = DB::table('task')->get();
-    
+    $tasks = App\Task::all();
     return view('tasks.index', compact('tasks') );
 });
 
 Route::get('/tasks/{task}', function ($id) {
-    
-    $task = DB::table('task')->find($id);
-    
+    $task = DB::table('tasks')->find($id);
     return  view('tasks.show', compact('task') );
 });
 

@@ -1,10 +1,10 @@
-<?php
+ <?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTaskTable extends Migration
+class CreateTasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateTaskTable extends Migration
      */
     public function up()
     {
-        Schema::create('task', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
             $table->text('body');
+            $table->boolean('completed')->default(false);
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateTaskTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('task');
+        Schema::dropIfExists('tasks');
     }
 }
