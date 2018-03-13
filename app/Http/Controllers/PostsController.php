@@ -24,12 +24,12 @@ class PostsController extends Controller
     
     public function store()
     {
-        $post = new Post;
-        
-        Post::create([
-            'title' => request('title'),
-            'body'  => request('body'),
+        $this->validate(request(),[
+            'title' => 'required',
+            'body'  => 'required',
         ]);
+        
+        Post::create(['title','body']);
         return redirect('/');
     }
 }
